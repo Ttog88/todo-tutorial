@@ -39,14 +39,33 @@ export function TodoList() {
     <div className="flex flex-col gap-4">
       <TodoInput onAdd={addTodo} />
 
-      <TodoSearch value={query} onChange={setQuery} />
+      <section className="flex flex-col gap-3 rounded-lg border p-4">
+        <TodoSearch value={query} onChange={setQuery} />
 
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <TodoFilter value={filter} onChange={setFilter} />
-        <TodoSort value={sortBy} onChange={setSortBy} />
-      </div>
+        <div className="flex items-center gap-3">
+          <span className="w-14 shrink-0 text-xs text-muted-foreground">
+            상태
+          </span>
+          <TodoFilter value={filter} onChange={setFilter} />
+        </div>
 
-      <TodoCategoryFilter value={categoryFilter} onChange={setCategoryFilter} />
+        <div className="flex items-center gap-3">
+          <span className="w-14 shrink-0 text-xs text-muted-foreground">
+            카테고리
+          </span>
+          <TodoCategoryFilter
+            value={categoryFilter}
+            onChange={setCategoryFilter}
+          />
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="w-14 shrink-0 text-xs text-muted-foreground">
+            정렬
+          </span>
+          <TodoSort value={sortBy} onChange={setSortBy} />
+        </div>
+      </section>
 
       {loaded && visibleTodos.length === 0 ? (
         <p className="py-6 text-center text-sm text-muted-foreground">
